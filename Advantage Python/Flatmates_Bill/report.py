@@ -1,4 +1,6 @@
 from fpdf import FPDF
+import webbrowser
+import os
 
 class PDFReport:
     '''
@@ -17,7 +19,7 @@ class PDFReport:
         pdf.add_page()
 
         #Add icon
-        pdf.image(name='house.png', w=30, h=30)
+        pdf.image(name='files/house.png', w=30, h=30)
 
         #insert title
         pdf.set_font(family='Times', size=24, style='B')
@@ -37,6 +39,8 @@ class PDFReport:
         pdf.cell(w=100, h=25, txt=flatmate2.name, border=0)
         pdf.cell(w=100, h=25, txt=flatmate2_pay, border=0)
 
+        #change the directory to files\...
+        os.chdir('files')
         pdf.output(self.filename)
 
         #Open the pdf automatically
