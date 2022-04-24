@@ -1,3 +1,4 @@
+import webbrowser
 from fpdf import FPDF
 
 class Bill:
@@ -63,13 +64,23 @@ class PDFReport:
 
         pdf.output(self.filename)
 
+        #Open the pdf automatically
+        webbrowser.open(self.filename)
 
-a_bill = Bill(amount=200, period='March 2020')
-john = Flatmate(name='John', days_in_house=20)
-marry = Flatmate(name='Marry', days_in_house=25)
 
-print('John pays: ', john.pays(bill=a_bill, flatmate2=marry))
-print('Marry pays: ', marry.pays(a_bill, john))
+amount = float(input('Hey user, enter the bill amount: '))
+period = input('What is the period?: ')
+flatmate1 = input('What is the name of one flatmate?: ')
+days_in_house = int(input(f'How many days did {flatmate1} stay in the house during the bill perios? '))
+flatmate2 = input('What is the name of the other flatmate?: ')
+days_in_house2 = int(input(f'How many days did {flatmate2} stay in the house during the bill perios? '))
 
-pdf_report = PDFReport(filename='Report1.pdf')
-pdf_report.generate(flatmate1=john, flatmate2=marry, bill=a_bill)
+a_bill = Bill(amount=amount, period=period)
+mate1 = Flatmate(name=flatmate1, days_in_house=20)
+mate2 = Flatmate(name=flatmate2, days_in_house=25)
+
+print(f'{flatmate1} pays: ', mate1.pays(bill=a_bill, flatmate2=mate2))
+print('Marry pays: ', mate2.pays(a_bill, mate1))
+
+pdf_report = PDFReport(filename=f'{a_bill.period}.pdf')
+pdf_report.generate(flatmate1=mate1, flatmate2=mate2, bill=a_bill)
