@@ -1,4 +1,5 @@
-from flat import Bill, Flatmate, PDFReport
+from flat import Bill, Flatmate
+from report import PDFReport
 
 amount = float(input('Hey user, enter the bill amount: '))
 period = input('What is the period?: ')
