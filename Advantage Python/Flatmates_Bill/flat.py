@@ -1,6 +1,3 @@
-import webbrowser
-
-
 class Bill:
     '''
     Object that contains data about a bill, such as total amout and period of the bill
