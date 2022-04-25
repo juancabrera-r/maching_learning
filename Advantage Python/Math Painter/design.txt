@@ -1,0 +1,25 @@
+Title: Math Painter
+
+Description: An app that lets the user provide the start coordinates of geometrical shapes such as squares and
+rectangles, their dimensions, and their colors, and the program produces an image file canvas with the geometrical
+shapes drawn in it.
+
+Object:
+        Square:
+            X
+            Y
+            Side
+            Color
+            draw(canvas)
+        Rectangle:
+            X
+            Y
+            Width
+            Height
+            Color
+            draw(canvas)
+        Canvas
+            Width
+            Height
+            Background color
+            make(iamgepath)
